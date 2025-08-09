@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: "https://real-time-news-alert-backend.onrender.com/api",
   withCredentials: true,
 });
 
