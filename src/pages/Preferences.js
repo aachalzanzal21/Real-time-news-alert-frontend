@@ -36,27 +36,31 @@ const Preferences = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Set News Preferences</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <strong>Select Categories:</strong><br />
-          {availableCategories.map(cat => (
-            <div key={cat} className="form-check form-check-inline">
-              <input type="checkbox" className="form-check-input" checked={categories.includes(cat)} onChange={() => toggleCategory(cat)} />
-              <label className="form-check-label">{cat}</label>
+      <div className="row justify-content-center">
+        <div className="col-md-8">
+          <h2>Set News Preferences</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <strong>Select Categories:</strong><br />
+              {availableCategories.map(cat => (
+                <div key={cat} className="form-check form-check-inline">
+                  <input type="checkbox" className="form-check-input" checked={categories.includes(cat)} onChange={() => toggleCategory(cat)} />
+                  <label className="form-check-label">{cat}</label>
+                </div>
+              ))}
             </div>
-          ))}
+            <div className="mb-3">
+              <label>Frequency:</label>
+              <select className="form-select" value={frequency} onChange={e => setFrequency(e.target.value)}>
+                <option value="immediate">Immediate</option>
+                <option value="hourly">Hourly</option>
+                <option value="daily">Daily</option>
+              </select>
+            </div>
+            <button className="btn btn-primary">Save Preferences</button>
+          </form>
         </div>
-        <div className="mb-3">
-          <label>Frequency:</label>
-          <select className="form-select" value={frequency} onChange={e => setFrequency(e.target.value)}>
-            <option value="immediate">Immediate</option>
-            <option value="hourly">Hourly</option>
-            <option value="daily">Daily</option>
-          </select>
-        </div>
-        <button className="btn btn-primary">Save Preferences</button>
-      </form>
+      </div>
     </div>
   );
 };

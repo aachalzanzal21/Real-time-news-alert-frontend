@@ -22,29 +22,33 @@ const NewsFeed = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">News Feed</h2>
-      {loading ? (
-        <p>Loading news...</p>
-      ) : (
-        <div className="list-group">
-          {articles.map((article, index) => (
-            <a
-              key={index}
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="list-group-item list-group-item-action"
-            >
-              <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">{article.title}</h5>
-                <small>{new Date(article.publishedAt).toLocaleDateString()}</small>
-              </div>
-              <p className="mb-1">{article.description}</p>
-              <small>{article.source.name}</small>
-            </a>
-          ))}
+      <div className="row justify-content-center">
+        <div className="col-md-8">
+          <h2 className="mb-4">News Feed</h2>
+          {loading ? (
+            <p>Loading news...</p>
+          ) : (
+            <div className="list-group">
+              {articles.map((article, index) => (
+                <a
+                  key={index}
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="list-group-item list-group-item-action"
+                >
+                  <div className="d-flex w-100 justify-content-between flex-wrap">
+                    <h5 className="mb-1">{article.title}</h5>
+                    <small>{new Date(article.publishedAt).toLocaleDateString()}</small>
+                  </div>
+                  <p className="mb-1">{article.description}</p>
+                  <small>{article.source.name}</small>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 };
