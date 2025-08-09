@@ -12,6 +12,7 @@ const Login = () => {
     try {
       const res = await api.post('/users/login', { email, password });
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('userEmail', email);
       navigate('/news');
     } catch (err) {
       if (err.response && err.response.data) {

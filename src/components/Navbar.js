@@ -3,8 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const userEmail = localStorage.getItem('userEmail');
+
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('userEmail');
     navigate('/login');
   };
 
@@ -24,6 +27,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
+                <li className="nav-item"><span className="nav-link">Hi, <b>{userEmail}</b></span></li>
                 <li className="nav-item"><Link className="nav-link" to="/news">News</Link></li>
                 <li className="nav-item"><Link className="nav-link" to="/preferences">Preferences</Link></li>
                 <li className="nav-item"><button className="btn btn-link nav-link" onClick={logout}>Logout</button></li>
